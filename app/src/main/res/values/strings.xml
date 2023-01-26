@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">VideoSplit</string>
+    <string name="app_name">Video Split</string>
     <string name="select_video">Select video</string>
     <string name="progress_percent">%d%%</string>
     <string name="cancel">Cancel</string>
