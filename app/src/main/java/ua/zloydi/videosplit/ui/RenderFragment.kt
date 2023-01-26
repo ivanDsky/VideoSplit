@@ -24,6 +24,8 @@ class RenderFragment : BindingFragment<FragmentRenderBinding>() {
 		
 		viewModel.renderVideo(inputUri, requireContext().cacheDir.absolutePath + "/output.mp4")
 		
+		requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {}
+		
 		binding.btnCancel.setOnClickListener { viewModel.cancel() }
 		
 		lifecycleScope.launchWhenStarted {
