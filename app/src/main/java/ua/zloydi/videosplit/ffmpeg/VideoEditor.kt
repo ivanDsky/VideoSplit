@@ -8,6 +8,11 @@ import com.arthenica.ffmpegkit.FFprobeKit
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
+data class Session(
+	val sessionId: Long,
+	val progress: StateFlow<Int>
+)
+
 class VideoEditor(private val context: Context) {
 	fun getSafPath(uri: Uri) = FFmpegKitConfig.getSafParameterForRead(context, uri)
 	
@@ -17,13 +22,13 @@ class VideoEditor(private val context: Context) {
 		return mediaInfo.duration.toFloat()
 	}
 	
-	fun swapVideo(uri: Uri, output: String): StateFlow<Int> {
+	fun swapVideo(uri: Uri, output: String): Session {
 		val duration = getDuration(uri)
 		val durationMillis = (duration * 1000).toInt()
 		val half = duration / 2
 		val path = getSafPath(uri)
 		val progress = MutableStateFlow(0)
-		FFmpegKit.executeAsync("-i $path  -filter_complex \"" +
+		val session = FFmpegKit.executeAsync("-i $path  -filter_complex \"" +
 								   " [0:v]trim=0:$half,setpts=PTS-STARTPTS[v0];" +
 								   " [0:a]atrim=0:$half,asetpts=PTS-STARTPTS[a0];" +
 								   " [0:v]trim=$half:$duration,setpts=PTS-STARTPTS[v1]; " +
@@ -33,8 +38,14 @@ class VideoEditor(private val context: Context) {
 							   {progress.value = 100},
 							   {},
 							   {progress.value = it.time * 100 / durationMillis})
-		return progress
+		return Session(session.sessionId, progress)
 	}
+	
+	fun cancel(sessionId: Long){
+		FFmpegKit.cancel(sessionId)
+	}
+	
+	
 	
 	
 }

@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -23,16 +24,24 @@ class RenderFragment : BindingFragment<FragmentRenderBinding>() {
 		
 		viewModel.renderVideo(inputUri, requireContext().cacheDir.absolutePath + "/output.mp4")
 		
+		binding.btnCancel.setOnClickListener { viewModel.cancel() }
+		
 		lifecycleScope.launchWhenStarted {
 			viewModel.renderingState.collect{
-				if (it is RenderState.Result){
-					findNavController().navigate(
-						RenderFragmentDirections.actionRenderFragmentToPlayerFragment(it.output)
-					)
-				}
-				if (it is RenderState.Loading){
-					binding.tvProgress.text = getString(R.string.progress_percent, it.percent)
-					binding.progress.progress = it.percent
+				when(it){
+					RenderState.Idle       -> {}
+					RenderState.Canceled   -> {
+						findNavController().popBackStack()
+					}
+					is RenderState.Loading -> {
+						binding.tvProgress.text = getString(R.string.progress_percent, it.percent)
+						binding.progress.progress = it.percent
+					}
+					is RenderState.Result  -> {
+						findNavController().navigate(
+							RenderFragmentDirections.actionRenderFragmentToPlayerFragment(it.output)
+						)
+					}
 				}
 			}
 		}
