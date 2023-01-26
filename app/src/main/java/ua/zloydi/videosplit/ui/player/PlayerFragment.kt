@@ -18,6 +18,15 @@ class PlayerFragment : BindingFragment<FragmentVideoplayerBinding>() {
 		binding.player.setShowNextButton(false)
 		binding.player.setShowPreviousButton(false)
 		binding.player.player = viewModel.player
-		viewModel.player.play()
+	}
+	
+	override fun onStart() {
+		super.onStart()
+		viewModel.onStart()
+	}
+	
+	override fun onStop() {
+		super.onStop()
+		viewModel.onStop()
 	}
 }
