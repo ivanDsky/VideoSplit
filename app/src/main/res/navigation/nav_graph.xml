@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/pickerFragment"
-        android:name="ua.zloydi.videosplit.ui.PickerFragment"
+        android:name="ua.zloydi.videosplit.ui.picker.PickerFragment"
         android:label="PickerFragment" >
         <action
             android:id="@+id/action_pickerFragment_to_renderFragment"
@@ -14,7 +14,7 @@
     </fragment>
     <fragment
         android:id="@+id/renderFragment"
-        android:name="ua.zloydi.videosplit.ui.RenderFragment"
+        android:name="ua.zloydi.videosplit.ui.render.RenderFragment"
         android:label="RenderFragment" >
         <action
             android:id="@+id/action_renderFragment_to_playerFragment"
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/playerFragment"
-        android:name="ua.zloydi.videosplit.ui.PlayerFragment"
+        android:name="ua.zloydi.videosplit.ui.player.PlayerFragment"
         android:label="PlayerFragment" >
         <argument
             android:name="path"

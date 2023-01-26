@@ -1,4 +1,4 @@
-package ua.zloydi.videosplit.ui
+package ua.zloydi.videosplit.ui.core
 
 import android.os.Bundle
 import android.view.LayoutInflater

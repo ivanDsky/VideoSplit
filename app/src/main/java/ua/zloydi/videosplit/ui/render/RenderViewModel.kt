@@ -1,4 +1,4 @@
-package ua.zloydi.videosplit.ui
+package ua.zloydi.videosplit.ui.render
 
 import android.app.Application
 import android.net.Uri

@@ -1,4 +1,4 @@
-package ua.zloydi.videosplit.ui
+package ua.zloydi.videosplit.ui.render
 
 import android.net.Uri
 import android.os.Bundle
@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import ua.zloydi.videosplit.R
 import ua.zloydi.videosplit.databinding.FragmentRenderBinding
+import ua.zloydi.videosplit.ui.core.BindingFragment
 
 class RenderFragment : BindingFragment<FragmentRenderBinding>() {
 	override fun inflate(inflater: LayoutInflater) = FragmentRenderBinding.inflate(inflater)

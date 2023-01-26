@@ -1,4 +1,4 @@
-package ua.zloydi.videosplit.ui
+package ua.zloydi.videosplit.ui.picker
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.contract.ActivityResultContracts.PickVisualMedia.VideoOnly
 import androidx.navigation.fragment.findNavController
 import ua.zloydi.videosplit.databinding.FragmentPickerBinding
+import ua.zloydi.videosplit.ui.core.BindingFragment
 
 class PickerFragment : BindingFragment<FragmentPickerBinding>() {
 	override fun inflate(inflater: LayoutInflater) = FragmentPickerBinding.inflate(inflater)
