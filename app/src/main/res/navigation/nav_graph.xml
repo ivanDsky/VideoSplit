@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pickerFragment">
+
+    <fragment
+        android:id="@+id/pickerFragment"
+        android:name="ua.zloydi.videosplit.ui.PickerFragment"
+        android:label="PickerFragment" >
+        <action
+            android:id="@+id/action_pickerFragment_to_renderFragment"
+            app:destination="@id/renderFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/renderFragment"
+        android:name="ua.zloydi.videosplit.ui.RenderFragment"
+        android:label="RenderFragment" >
+        <action
+            android:id="@+id/action_renderFragment_to_playerFragment"
+            app:destination="@id/playerFragment"
+            app:popUpTo="@id/pickerFragment"
+            app:popUpToInclusive="false" />
+        <argument
+            android:name="inputUri"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/playerFragment"
+        android:name="ua.zloydi.videosplit.ui.PlayerFragment"
+        android:label="PlayerFragment" >
+        <argument
+            android:name="path"
+            app:argType="string" />
+    </fragment>
+</navigation>

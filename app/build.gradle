@@ -1,0 +1,52 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    namespace 'ua.zloydi.videosplit'
+    compileSdk gradleDependencies.compileSdk
+
+    defaultConfig {
+        applicationId "ua.zloydi.videosplit"
+        minSdk gradleDependencies.minSdk
+        targetSdk gradleDependencies.targetSdk
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation androidX.lib
+    implementation androidX.appCompat
+    implementation androidX.fragment
+
+    implementation nav.fragment
+    implementation nav.ui
+
+    implementation ffmpeg.lib
+
+    implementation exoPlayer.core
+    implementation exoPlayer.ui
+
+    implementation imagePicker.lib
+}

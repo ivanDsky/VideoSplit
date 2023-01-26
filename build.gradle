@@ -1,0 +1,58 @@
+buildscript {
+    ext {
+        gradleDependencies = [
+                compileSdk: 33,
+                targetSdk : 33,
+                minSdk    : 24
+        ]
+
+        coroutinesVersion = "1.6.4"
+        coroutines = [
+                lib: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+        ]
+
+        androidX = [
+                lib      : "androidx.core:core-ktx:1.9.0",
+                appCompat: "androidx.appcompat:appcompat:1.6.0",
+                fragment : "androidx.fragment:fragment-ktx:1.5.5"
+        ]
+
+        nav_version = "2.5.3"
+        nav = [
+                fragment: "androidx.navigation:navigation-fragment-ktx:$nav_version",
+                ui      : "androidx.navigation:navigation-ui-ktx:$nav_version"
+        ]
+
+        lifecycleVersion = "2.5.1"
+        lifecycle = [
+                viewModelCompose: "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion"
+        ]
+
+        ffmpegVersion = "5.1"
+        ffmpeg = [
+                lib: "com.arthenica:ffmpeg-kit-min-gpl:$ffmpegVersion"
+        ]
+
+        exoPlayerVersion = "2.18.2"
+        exoPlayer = [
+                core: "com.google.android.exoplayer:exoplayer-core:$exoPlayerVersion",
+                ui  : "com.google.android.exoplayer:exoplayer-ui:$exoPlayerVersion"
+        ]
+
+        imagePickerVersion = "2.3.22"
+        imagePicker = [
+                lib: "com.github.Drjacky:ImagePicker:$imagePickerVersion"
+        ]
+    }
+
+    dependencies {
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+    }
+}
+
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id 'com.android.application' version '7.4.0' apply false
+    id 'com.android.library' version '7.4.0' apply false
+    id 'org.jetbrains.kotlin.android' version '1.8.0' apply false
+}
